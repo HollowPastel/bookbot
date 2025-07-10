@@ -6,7 +6,12 @@ def main():
     book_path = sys.argv[1]
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {book_path}")
-    text = get_book_text(book_path)
+    try:
+        text = get_book_text(book_path)
+    except Exception as e:
+        print(e)
+        print("Please provide valid path.")
+        return
     num_words = word_count(text)
     characters = character_count(text)
     sorted_characters = sorted(characters)
